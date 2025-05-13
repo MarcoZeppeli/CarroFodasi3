@@ -20,18 +20,27 @@
     }
 
     .slideshow-container {
+      width: 100%;
       max-width: 800px;
-      position: relative;
+      overflow: hidden;
       margin: 30px auto;
+      position: relative;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 1s ease;
     }
 
     .slide {
-      display: none;
       width: 100%;
+      height: 100%;
+      flex-shrink: 0;
     }
 
     img {
       width: 100%;
+      height: auto;
       border-radius: 10px;
     }
   </style>
@@ -41,22 +50,28 @@
   <header>CarroFodasi</header>
 
   <div class="slideshow-container">
-    <img class="slide" src="https://carrosbemmontados.com.br/wp-content/uploads/2024/12/toyota-supra-mk5-2-2.webp" alt="Supra 1">
-    <img class="slide" src="https://cdn.motor1.com/images/mgl/gYBR7/s1/the-fast-and-the-furious-toyota-supra-auction-three-quarters-low-angle.webp" alt="Supra 2">
-    <img class="slide" src="https://carrosbemmontados.com.br/wp-content/uploads/2024/11/toyota-supra-mk4-1.webp" alt="Supra 3">
+    <div class="slides">
+      <!-- Imagens com os novos links -->
+      <div class="slide"><img src="https://carrosbemmontados.com.br/wp-content/uploads/2024/12/toyota-supra-mk5-2-2.webp" alt="Supra 1"></div>
+      <div class="slide"><img src="https://cdn.motor1.com/images/mgl/gYBR7/s1/the-fast-and-the-furious-toyota-supra-auction-three-quarters-low-angle.webp" alt="Supra 2"></div>
+      <div class="slide"><img src="https://carrosbemmontados.com.br/wp-content/uploads/2024/11/toyota-supra-mk4-1.webp" alt="Supra 3"></div>
+    </div>
   </div>
 
   <script>
     let slideIndex = 0;
-    const slides = document.getElementsByClassName("slide");
+    const slides = document.querySelector(".slides");
+    const totalSlides = document.querySelectorAll(".slide").length;
 
     function showSlides() {
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
       slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1; }
-      slides[slideIndex - 1].style.display = "block";
+      if (slideIndex >= totalSlides) {
+        slideIndex = 0;
+      }
+
+      // Move as imagens horizontalmente
+      slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+
       setTimeout(showSlides, 3000); // Muda a cada 3 segundos
     }
 
