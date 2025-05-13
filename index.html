@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarroFodasi</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    header {
+      padding: 20px;
+      background-color: #222;
+      font-size: 2rem;
+    }
+
+    .slideshow-container {
+      max-width: 800px;
+      position: relative;
+      margin: 30px auto;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>CarroFodasi</header>
+
+  <div class="slideshow-container">
+    <img class="slide" src="https://cdn.pixabay.com/photo/2022/03/18/16/57/toyota-supra-7077723_1280.jpg" alt="Supra 1">
+    <img class="slide" src="https://cdn.pixabay.com/photo/2021/11/10/08/56/car-6781674_1280.jpg" alt="Supra 2">
+    <img class="slide" src="https://cdn.pixabay.com/photo/2022/03/05/14/14/toyota-7049252_1280.jpg" alt="Supra 3">
+  </div>
+
+  <script>
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName("slide");
+
+    function showSlides() {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1; }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 3000); // Muda a cada 3 segundos
+    }
+
+    showSlides(); // Inicia o slideshow
+  </script>
+
+</body>
+</html>
